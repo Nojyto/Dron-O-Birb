@@ -13,7 +13,10 @@ THRESHOLD = 0.2
 
 
 if __name__ == '__main__':
+    if not os.path.exists(VIDEO_PATH):
+        raise Exception(f"MP4 file at \"{VIDEO_PATH}\" not found")
     cap = cv2.VideoCapture(VIDEO_PATH)
+
     ret, frame = cap.read()
     H, W, _ = frame.shape
     out = cv2.VideoWriter(VIDEO_PATH_OUT, cv2.VideoWriter_fourcc(*'XVID'), int(cap.get(cv2.CAP_PROP_FPS)), (W, H))
