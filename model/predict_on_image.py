@@ -5,8 +5,8 @@ from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator
 
 
-IMAGE_FOLDER_PATH = './datasets/VisDrone/VisDrone2019-DET-test-dev/images'
-MODEL_PATH = "./model/runs/detect/train4/weights/best.pt"
+IMAGE_FOLDER_PATH = '../datasets/UAVDetection/valid/images/'
+MODEL_PATH = "./runs/detect/train/weights/best.pt"
 
 
 def select_random_image(folder_path: str) -> str | None:

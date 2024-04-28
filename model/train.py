@@ -13,21 +13,13 @@ def main():
     try:
         model = YOLO(BASE_MODEL).to(device)
     except Exception as e:
-        print(f"Error loading model: {e}")
-        return
+        raise Exception(f"Error loading model: {e}")
 
     # Train the model
     try:
         results = model.train(data=DATA_PATH, epochs=1, imgsz=640, device=device)
     except Exception as e:
-        print(f"Error training model: {e}")
-        return
-    
-    # Evaluate the model
-    metrics = model.val()
-    
-    # Export the model
-    path = model.export(format="onnx")
+        raise Exception(f"Error training model: {e}")
 
 
 if __name__ == '__main__':
