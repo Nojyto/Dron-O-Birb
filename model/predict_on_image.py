@@ -1,24 +1,11 @@
 import cv2
-import os
-import random
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator
+from helpers import select_random_image
 
 
 IMAGE_FOLDER_PATH = '../datasets/UAVDetection/valid/images/'
 MODEL_PATH = "./runs/detect/train/weights/best.pt"
-
-
-def select_random_image(folder_path: str) -> str | None:
-    files = os.listdir(folder_path)
-    images = [file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg'))]
-    if images:
-        random_image = random.choice(images)
-        print(f"Selected random image: {random_image}")
-        return os.path.join(folder_path, random_image)
-    else:
-        print("No images found in the directory.")
-        return None
 
 
 def detect_objects_in_image(image_path: str) -> None:
